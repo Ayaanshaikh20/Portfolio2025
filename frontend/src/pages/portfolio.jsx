@@ -82,8 +82,12 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
+        {/* Experience */}
+        <section className=" mt-10">
+
+        </section>
         {/* Education */}
-        <section className=" mt-16">
+        <section className=" mt-10">
           <div className="w-full flex flex-col lg:flex lg:flex-row justify-between items-center align-middle border-2 border-white mt-5 mb-6 p-4">
             <span className=" font-semibold text-xl text-white tracking-wide">Education</span>
             <div className=" mt-2 w-full">
