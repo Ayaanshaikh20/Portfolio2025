@@ -20,28 +20,25 @@ import LogoCC from "../assets/img/logoCareerCompass.png";
 import emailjs from "emailjs-com";
 import { useRef } from "react";
 
+const serviceKey = import.meta.env.SERVICE_URL;
+const templateKey = import.meta.env.TEMPLATE_URL;
+const privateKey = import.meta.env.PRIVATE_KEY;
+
 const Portfolio = () => {
   const navigate = useNavigate();
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_vpsmf6x",
-        "template_wuu5jd9",
-        form.current,
-        "2HzvduR_Bltc5R0Xp"
-      )
-      .then(
-        (result) => {
-          alert("Message sent successfully!");
-          form.current.reset();
-        },
-        (error) => {
-          alert("Failed to send message. Try again later.");
-        }
-      );
+    emailjs.sendForm(serviceKey, templateKey, form.current, privateKey).then(
+      (result) => {
+        alert("Message sent successfully!");
+        form.current.reset();
+      },
+      (error) => {
+        alert("Failed to send message. Try again later.");
+      }
+    );
   };
 
   return (
