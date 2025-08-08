@@ -22,7 +22,7 @@ import { useRef } from "react";
 
 const serviceKey = import.meta.env.VITE_SERVICE_URL;
 const templateKey = import.meta.env.VITE_TEMPLATE_URL;
-const privateKey = import.meta.env.VITE_PRIVATE_KEY;
+const privateKey = import.meta.env.VITE_PUBLIC_KEY;
 
 console.log(serviceKey, templateKey, privateKey)
 
