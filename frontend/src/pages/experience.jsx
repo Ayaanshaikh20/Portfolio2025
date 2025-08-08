@@ -84,10 +84,10 @@ const Experience = () => {
                   </li>
                 </ul>
               </div>
-              <div class="mt-10">
-                <ul class="list-disc pl-4 space-y-3 text-white text-sm sm:text-md md:text-lg lg:text-md 2xl:text-xl">
-                  <span class="font-semibold block">Clinicsoft Web (User Panel)</span>
-                  <p class="text-gray-300 text-sm mb-2">
+              <div className="mt-10">
+                <ul className="list-disc pl-4 space-y-3 text-white text-sm sm:text-md md:text-lg lg:text-md 2xl:text-xl">
+                  <span className="font-semibold block">Clinicsoft Web (User Panel)</span>
+                  <p className="text-gray-300 text-sm mb-2">
                     Clinicsoft is a healthcare application enabling doctors to manage patients, appointments, and
                     prescriptions efficiently.
                   </p>

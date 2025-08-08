@@ -20,9 +20,11 @@ import LogoCC from "../assets/img/logoCareerCompass.png";
 import emailjs from "emailjs-com";
 import { useRef } from "react";
 
-const serviceKey = import.meta.env.SERVICE_URL;
-const templateKey = import.meta.env.TEMPLATE_URL;
-const privateKey = import.meta.env.PRIVATE_KEY;
+const serviceKey = import.meta.env.VITE_SERVICE_URL;
+const templateKey = import.meta.env.VITE_TEMPLATE_URL;
+const privateKey = import.meta.env.VITE_PRIVATE_KEY;
+
+console.log(serviceKey, templateKey, privateKey)
 
 const Portfolio = () => {
   const navigate = useNavigate();
