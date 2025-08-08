@@ -55,7 +55,6 @@ const Experience = () => {
               </span>
               <span className="text-sm lg:text-lg text-white font-mono">Associate Software Engineer</span>
               <span className="text-gray-500 text-sm">Jun 2023 – May 2024 | Mumbai, Maharashtra</span>
-
               <div className="mt-5">
                 <ul className="list-disc pl-4 space-y-3 text-white text-sm sm:text-md md:text-lg lg:text-md 2xl:text-xl">
                   <span className="font-semibold block">EZOrder Web – Field Salesman (User Panel)</span>
