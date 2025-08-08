@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router";
 import { IconButton } from "@mui/material";
-import resume from "../assets/img/ayaanCV2025.pdf";
+import resume from "../assets/img/ayaanCV082025.pdf";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Layout = () => {
