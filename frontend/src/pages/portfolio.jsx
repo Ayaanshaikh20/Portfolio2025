@@ -46,7 +46,7 @@ const Portfolio = () => {
 
   return (
     <main id="About" className="w-full flex flex-col bg-[#212121] align-middle items-center justify-center">
-      <main className="w-full min-h-screen max-w-7xl max-xl:px-3">
+      <main className="w-full max-xl:px-3">
         {/* Main */}
         <section className=" mt-20">
           <div className="w-full border-2 border-white p-4 lg:p-10">
@@ -93,7 +93,7 @@ const Portfolio = () => {
                 <img src={Profile} alt="Profile" className=" rounded-full w-44 md:w-1/2 lg:w-3/4 xl:w-3/4 2xl:w-3/5" />
               </div>
             </div>
-            <div className=" mt-5 flex justify-center w-full">
+            {/* <div className=" mt-5 flex justify-center w-full">
               <button
                 onClick={() => {
                   navigate("/about");
@@ -103,7 +103,7 @@ const Portfolio = () => {
                 <ArrowDownwardIcon />
                 Read more
               </button>
-            </div>
+            </div> */}
           </div>
         </section>
         {/* Experience */}
@@ -394,8 +394,11 @@ const Portfolio = () => {
           </div>
         </section>
         {/* Contact me */}
-        <section className="mt-20" id="Contact">
-          <div className="w-full flex flex-col items-center align-middle gap-6 border-2 text-white border-white p-4 lg:p-10">
+        <section className="mt-20">
+          <div
+            id="Contact"
+            className="w-full flex flex-col items-center align-middle gap-6 border-2 text-white border-white p-4 lg:p-10"
+          >
             <span className="font-semibold text-xl lg:text-4xl text-white tracking-wide">Contact Me</span>
             <form className="w-full max-w-xl flex flex-col gap-4" ref={form} onSubmit={sendEmail}>
               <div className="flex flex-col">

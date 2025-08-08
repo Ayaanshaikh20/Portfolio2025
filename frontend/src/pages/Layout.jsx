@@ -6,7 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const Layout = () => {
   const navItems = [
-    { header: "Home", path: "/" },
+    // { header: "Home", path: "/" },
     { header: "Experience", path: "/experience" },
     { header: "Projects", path: "/projects" },
     { header: "Contact", path: "/contact" }
@@ -39,7 +39,9 @@ const Layout = () => {
           </div>
         </div>
       </nav>
-      <Outlet />
+      <main className="min-h-screen max-w-7xl">
+        <Outlet />
+      </main>
       {/* footer */}
       <section className="mt-20 w-full bg-black border-t  border-white" id="footer">
         <footer className="w-full mx-auto px-4 py-10 text-white flex flex-col sm:flex-row justify-between items-center gap-4">
