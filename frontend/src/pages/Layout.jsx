@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router";
-import { Drawer, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import resume from "../assets/img/ayaanCV082025.pdf";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import DrawerComponent from "./Drawer";
+import DrawerComponent from "./drawer";
 
 const Layout = () => {
   const [openMenu, setOpenMenu] = useState(false);
