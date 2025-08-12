@@ -24,8 +24,6 @@ const serviceKey = import.meta.env.VITE_SERVICE_URL;
 const templateKey = import.meta.env.VITE_TEMPLATE_URL;
 const privateKey = import.meta.env.VITE_PUBLIC_KEY;
 
-console.log(serviceKey, templateKey, privateKey)
-
 const Portfolio = () => {
   const navigate = useNavigate();
   const form = useRef();
@@ -47,7 +45,7 @@ const Portfolio = () => {
     <main id="About" className="w-full flex flex-col bg-[#212121] align-middle items-center justify-center">
       <main className="w-full max-xl:px-3">
         {/* Main */}
-        <section className=" mt-20">
+        <section className=" mt-12">
           <div className="w-full border-2 border-white p-4 lg:p-10">
             <div className="w-full flex flex-col lg:flex lg:flex-row justify-between items-center align-middle">
               <div className=" flex flex-col w-full">
@@ -92,17 +90,6 @@ const Portfolio = () => {
                 <img src={Profile} alt="Profile" className=" rounded-full w-44 md:w-1/2 lg:w-3/4 xl:w-3/4 2xl:w-3/5" />
               </div>
             </div>
-            {/* <div className=" mt-5 flex justify-center w-full">
-              <button
-                onClick={() => {
-                  navigate("/about");
-                }}
-                className="border border-white text-white p-2 text-[0.8rem] xl:text-lg hover:bg-white hover:text-black transition"
-              >
-                <ArrowDownwardIcon />
-                Read more
-              </button>
-            </div> */}
           </div>
         </section>
         {/* Experience */}

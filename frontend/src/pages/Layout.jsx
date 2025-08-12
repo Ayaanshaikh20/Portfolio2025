@@ -1,10 +1,14 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router";
-import { IconButton } from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
 import resume from "../assets/img/ayaanCV082025.pdf";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
+import DrawerComponent from "./Drawer";
 
 const Layout = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   const navItems = [
     // { header: "Home", path: "/" },
     { header: "Experience", path: "/experience" },
@@ -12,8 +16,14 @@ const Layout = () => {
     { header: "Contact", path: "/contact" }
   ];
 
+  const handleOpenDrawer = () => {
+    setOpenMenu((prev) => !prev);
+  };
+
   return (
     <main className="w-full flex flex-col bg-[#212121] align-middle items-center justify-center">
+      {/* Drawer */}
+      <DrawerComponent openMenu={openMenu} setOpenMenu={setOpenMenu} />
       {/* Navbar */}
       <nav className="bg-black  shadow-lg flex justify-center w-full px-3">
         <div className="flex items-center justify-between flex-1 h-16 max-w-7xl">
@@ -33,14 +43,14 @@ const Layout = () => {
             </button>
           </div>
           <div className="sm:hidden">
-            <IconButton color="inherit" aria-label="open drawer" edge="end">
+            <IconButton color="inherit" aria-label="open drawer" onClick={handleOpenDrawer} edge="end">
               <MenuIcon className="text-white" />
             </IconButton>
           </div>
         </div>
       </nav>
       <main className="min-h-screen max-w-7xl">
-        <Outlet />
+        <Outlet openMenu={openMenu} setOpenMenu={setOpenMenu} />
       </main>
       {/* footer */}
       <section className="mt-20 w-full bg-black border-t  border-white" id="footer">

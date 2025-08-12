@@ -2,9 +2,9 @@
 
 const Experience = () => {
   return (
-    <main>
+    <main className="w-full max-xl:px-3">
       {/* Experience */}
-      <section className="mt-20" id="Experience">
+      <section className="mt-12" id="Experience">
         <div className="w-full flex flex-col justify-between items-center align-middle border-2 border-white p-4 lg:p-10">
           <span className="font-semibold text-xl lg:text-4xl text-white tracking-wide">Experience</span>
 
