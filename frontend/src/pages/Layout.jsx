@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router";
 import { IconButton } from "@mui/material";
-import resume from "../assets/img/ayaanCV082025.pdf";
+import resume from "../assets/img/ayaanCV092025.pdf";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import DrawerComponent from "./drawer";
@@ -21,11 +21,11 @@ const Layout = () => {
   };
 
   return (
-    <main className="w-full flex flex-col bg-[#212121] align-middle items-center justify-center">
+    <main class="w-full flex flex-col bg-gradient-to-tr from-[#3f3f3f] to-[#000000] items-center justify-center">
       {/* Drawer */}
       <DrawerComponent openMenu={openMenu} setOpenMenu={setOpenMenu} />
       {/* Navbar */}
-      <nav className="bg-black  shadow-lg flex justify-center w-full px-3">
+      <nav className="bg-black  shadow-lg flex justify-center w-full px-3 sticky top-0">
         <div className="flex items-center justify-between flex-1 h-16 max-w-7xl">
           <Link to={"/"} className="text-white text-xl font-semibold tracking-widest">
             Ayaan Shaikh

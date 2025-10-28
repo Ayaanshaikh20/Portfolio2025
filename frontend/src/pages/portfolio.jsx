@@ -1,11 +1,11 @@
 /****************************Porfolio*******************************/
 import { Chip } from "@mui/material";
-import resume from "../assets/img/ayaanCV082025.pdf";
+import resume from "../assets/img/ayaanCV092025.pdf";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import Profile from "../assets/img/Media.jpg";
+import Profile from "../assets/img/MyImage.jpg";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -42,7 +42,7 @@ const Portfolio = () => {
   };
 
   return (
-    <main id="About" className="w-full flex flex-col bg-[#212121] align-middle items-center justify-center">
+    <main id="About" className="w-full flex flex-col align-middle items-center justify-center">
       <main className="w-full max-xl:px-3">
         {/* Main */}
         <section className=" mt-12">
@@ -61,22 +61,24 @@ const Portfolio = () => {
                   </button>
                 </div>
                 <div className="flex gap-5 mt-5">
-                  <GitHubIcon
-                    className="text-white transition duration-300 ease-in-out hover:text-gray-400"
-                    fontSize="large"
-                  />
-                  <LinkedInIcon
-                    className="text-white transition duration-300 ease-in-out hover:text-gray-400"
-                    fontSize="large"
-                  />
-                  <InstagramIcon
-                    className="text-white transition duration-300 ease-in-out hover:text-gray-400"
-                    fontSize="large"
-                  />
-                  <FacebookIcon
-                    className="text-white transition duration-300 ease-in-out hover:text-gray-400"
-                    fontSize="large"
-                  />
+                  <Link to={"https://github.com/Ayaanshaikh20"}>
+                    <GitHubIcon
+                      className="text-white transition duration-300 ease-in-out hover:text-gray-400"
+                      fontSize="large"
+                    />
+                  </Link>
+                  <Link to={"https://www.linkedin.com/in/muhammad-ayaan-shaikh/"}>
+                    <LinkedInIcon
+                      className="text-white transition duration-300 ease-in-out hover:text-gray-400"
+                      fontSize="large"
+                    />
+                  </Link>
+                  <Link to={"https://www.facebook.com/profile.php?id=100004227799035"}>
+                    <FacebookIcon
+                      className="text-white transition duration-300 ease-in-out hover:text-gray-400"
+                      fontSize="large"
+                    />
+                  </Link>
                 </div>
                 <div className="w-full flex mt-5">
                   <p className="text-white text-sm sm:text-md md:text-lg lg:text-md 2xl:text-xl mb-4">
@@ -262,6 +264,7 @@ const Portfolio = () => {
         <section id="Projects" className=" mt-20">
           <div className="w-full flex flex-col items-center align-middle gap-4 border-2 text-white border-white p-4 lg:p-10">
             <span className=" font-semibold text-xl lg:text-4xl text-white tracking-wide">Projects</span>
+            {/* CAREER COMPASS */}
             <div className=" w-full flex flex-col">
               <div className=" flex items-center gap-3 mb-3">
                 <span className=" text-md lg:text-xl font-semibold flex gap-2">
@@ -269,14 +272,6 @@ const Portfolio = () => {
                   CareerCompass
                 </span>
                 <div className=" flex gap-4">
-                  <Link title="visit" to={"https://careercompass.cyrusesolutions.xyz/"}>
-                    <InsertLinkIcon
-                      sx={{
-                        fontSize: 25,
-                        color: "white"
-                      }}
-                    />
-                  </Link>
                   <Link title="source code" to={"https://github.com/Ayaanshaikh20/CareerCompass/"}>
                     <GitHubIcon
                       sx={{
