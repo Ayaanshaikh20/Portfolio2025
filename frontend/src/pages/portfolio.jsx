@@ -1,9 +1,8 @@
 /****************************Porfolio*******************************/
-import { Chip } from "@mui/material";
+import { Chip, Rating } from "@mui/material";
 import resume from "../assets/img/ayaanCV092025.pdf";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Profile from "../assets/img/MyImage.jpg";
 import Timeline from "@mui/lab/Timeline";
@@ -14,11 +13,13 @@ import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useNavigate } from "react-router";
-import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import { Link } from "react-router";
 import LogoCC from "../assets/img/logoCareerCompass.png";
 import emailjs from "emailjs-com";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useState } from "react";
+import TestimonialsCarousel from "./testimonialsCarousel";
+import axios from "axios";
 
 const serviceKey = import.meta.env.VITE_SERVICE_URL;
 const templateKey = import.meta.env.VITE_TEMPLATE_URL;
@@ -27,6 +28,21 @@ const privateKey = import.meta.env.VITE_PUBLIC_KEY;
 const Portfolio = () => {
   const navigate = useNavigate();
   const form = useRef();
+  const [activeTab, setActiveTab] = useState("contact");
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbackForm, setFeedbackForm] = useState({
+    shop_name: "",
+    owner_name: "",
+    address: "",
+    rating: 0,
+    desc: ""
+  });
+
+  const { shop_name, owner_name, address, rating, desc } = feedbackForm;
+
+  useEffect(() => {
+    fetchFeedbacks();
+  }, [])
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -40,6 +56,40 @@ const Portfolio = () => {
       }
     );
   };
+
+  const fetchFeedbacks = async () => {
+    try {
+      let result = await axios.get("/api/feedback");
+      const { data, status, statusText } = result;
+      console.log(result)
+      if (status === 200 && statusText === "OK") {
+        setFeedbacks(data.feedbacks);
+      }
+    } catch (error) {
+      alert("Error fetching feedbacks. Please try again later.");
+    };
+  }
+
+  const handleFeedbackSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let result = await axios.post("/api/feedback", feedbackForm);
+      const { data, status, statusText } = result;
+      if (status === 200 && statusText === "OK") {
+        alert(data.message);
+        setFeedbackForm({
+          shop_name: "",
+          owner_name: "",
+          address: "",
+          rating: 0,
+          desc: ""
+        });
+      }
+    } catch (error) {
+      alert("Error submitting feedback. Please try again later.");
+    };
+  };
+
 
   return (
     <main id="About" className="w-full flex flex-col align-middle items-center justify-center">
@@ -374,57 +424,224 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
-        {/* Contact me */}
+        {/* Testimonials */}
+        {
+          feedbacks.length > 0 && (
+            <section className="mt-20" id="Testimonials">
+              <TestimonialsCarousel feedbacks={feedbacks} />
+            </section>
+          )
+        }
+        {/* Contact & Feedback Section */}
         <section className="mt-20">
           <div
             id="Contact"
             className="w-full flex flex-col items-center align-middle gap-6 border-2 text-white border-white p-4 lg:p-10"
           >
-            <span className="font-semibold text-xl lg:text-4xl text-white tracking-wide">Contact Me</span>
-            <form className="w-full max-w-xl flex flex-col gap-4" ref={form} onSubmit={sendEmail}>
-              <div className="flex flex-col">
-                <label htmlFor="name" className="mb-1 text-sm font-medium">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label htmlFor="email" className="mb-1 text-sm font-medium">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label htmlFor="message" className="mb-1 text-sm font-medium">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Your message..."
-                  className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
-                ></textarea>
-              </div>
+            <span className="font-semibold text-xl lg:text-4xl text-white tracking-wide">
+              Get in Touch
+            </span>
+
+            {/* Tabs */}
+            <div className="flex gap-4 border-b border-white pb-2">
               <button
-                type="submit"
-                className="bg-white text-black font-semibold py-2 px-6 rounded hover:bg-red-400 hover:text-white transition-all duration-300"
+                onClick={() => setActiveTab("contact")}
+                className={`px-4 py-2 font-semibold ${activeTab === "contact"
+                  ? "border-b-2 border-red-400 text-red-400"
+                  : "text-white"
+                  }`}
               >
-                Send Message
+                Contact Me
               </button>
-            </form>
+
+              <button
+                onClick={() => setActiveTab("feedback")}
+                className={`px-4 py-2 font-semibold ${activeTab === "feedback"
+                  ? "border-b-2 border-red-400 text-red-400"
+                  : "text-white"
+                  }`}
+              >
+                Feedback
+              </button>
+            </div>
+            {/* CONTACT FORM */}
+            {activeTab === "contact" && (
+              <form className="w-full max-w-xl flex flex-col gap-4" ref={form} onSubmit={sendEmail}>
+                <div className="flex flex-col">
+                  <label htmlFor="name" className="mb-1 text-sm font-medium">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label htmlFor="email" className="mb-1 text-sm font-medium">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label htmlFor="message" className="mb-1 text-sm font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Your message..."
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-white text-black font-semibold py-2 px-6 rounded hover:bg-red-400 hover:text-white transition-all duration-300"
+                >
+                  Send Message
+                </button>
+              </form>
+            )}
+            {/* FEEDBACK FORM */}
+            {activeTab === "feedback" && (
+              <form className="w-full max-w-xl flex flex-col gap-4" onSubmit={handleFeedbackSubmit}>
+
+                {/* Shop Name */}
+                <div className="flex flex-col">
+                  <label htmlFor="shop_name" className="mb-1 text-sm font-medium">
+                    Shop Name
+                  </label>
+                  <input
+                    type="text"
+                    value={shop_name}
+                    onChange={(e) => {
+                      setFeedbackForm((prev) => {
+                        return {
+                          ...prev,
+                          shop_name: e.target.value
+                        }
+                      })
+                    }}
+                    id="shop_name"
+                    name="shop_name"
+                    placeholder="Enter shop name"
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  />
+                </div>
+
+                {/* Owner Name */}
+                <div className="flex flex-col">
+                  <label htmlFor="owner_name" className="mb-1 text-sm font-medium">
+                    Owner Name
+                  </label>
+                  <input
+                    type="text"
+                    id="owner_name"
+                    value={owner_name}
+                    onChange={(e) => {
+                      setFeedbackForm((prev) => {
+                        return {
+                          ...prev,
+                          owner_name: e.target.value
+                        }
+                      })
+                    }}
+                    name="owner_name"
+                    placeholder="Enter owner name"
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  />
+                </div>
+
+                {/* Address */}
+                <div className="flex flex-col">
+                  <label htmlFor="address" className="mb-1 text-sm font-medium">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => {
+                      setFeedbackForm((prev) => {
+                        return {
+                          ...prev,
+                          address: e.target.value
+                        }
+                      })
+                    }}
+                    id="address"
+                    name="address"
+                    placeholder="Enter address"
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  />
+                </div>
+
+                {/* Star Rating */}
+                <div className="flex flex-col">
+                  <label htmlFor="rating" className="mb-1 text-sm font-medium">
+                    Rating (out of 5)
+                  </label>
+                  <div className=" flex gap-5 items-center">
+                    <Rating
+                      name="rating-feedback"
+                      precision={0.5}
+                      size="large"
+                      value={rating}
+                      onChange={(event, newValue) => {
+                        setFeedbackForm((prev) => {
+                          return {
+                            ...prev,
+                            rating: newValue,
+                          }
+                        })
+                      }}
+                    />
+                    <span>{rating}/5</span>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="flex flex-col">
+                  <label htmlFor="desc" className="mb-1 text-sm font-medium">
+                    Feedback Description
+                  </label>
+                  <textarea
+                    id="desc"
+                    name="desc"
+                    rows="3"
+                    value={desc}
+                    onChange={(e) => {
+                      setFeedbackForm((prev) => {
+                        return {
+                          ...prev,
+                          desc: e.target.value
+                        }
+                      })
+                    }}
+                    placeholder="Write your feedback..."
+                    className="p-3 bg-transparent border border-white text-white placeholder-white rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-white text-black font-semibold py-2 px-6 rounded hover:bg-red-400 hover:text-white transition-all duration-300"
+                >
+                  Submit Feedback
+                </button>
+              </form>
+            )}
           </div>
         </section>
       </main>
