@@ -3,11 +3,12 @@ require("dotenv").config();
 
 let pool;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'production') {
   // For Render or other hosted environments
   pool = new Pool({
     connectionString: process.env.DATABASE_URL_PRODUCTION,
     ssl: {
+      require: true,
       rejectUnauthorized: false,
     },
   });
