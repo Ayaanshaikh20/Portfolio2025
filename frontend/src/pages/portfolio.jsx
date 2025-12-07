@@ -20,6 +20,7 @@ import { useEffect, useRef } from "react";
 import { useState } from "react";
 import TestimonialsCarousel from "./testimonialsCarousel";
 import axios from "axios";
+import api from "../config/api";
 
 const serviceKey = import.meta.env.VITE_SERVICE_URL;
 const templateKey = import.meta.env.VITE_TEMPLATE_URL;
@@ -59,7 +60,7 @@ const Portfolio = () => {
 
   const fetchFeedbacks = async () => {
     try {
-      let result = await axios.get("/api/feedback");
+      let result = await api.get("/api/feedback");
       const { data, status, statusText } = result;
       if (status === 200 && statusText === "OK") {
         setFeedbacks(data.feedbacks);
@@ -72,7 +73,7 @@ const Portfolio = () => {
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
     try {
-      let result = await axios.post("/api/feedback", feedbackForm);
+      let result = await api.post("/api/feedback", feedbackForm);
       const { data, status, statusText } = result;
       if (status === 200 && statusText === "OK") {
         alert(data.message);
