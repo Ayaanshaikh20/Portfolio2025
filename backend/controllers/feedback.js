@@ -16,10 +16,11 @@ const submitFeedback = async (req, res, next) => {
 
         await pool.query(sqlQuery);
 
-        next()
+        next();
     } catch (error) {
         res.status(500).json({
-            message: "Error submitting feedback"
+            message: "Error submitting feedback",
+            error: error.message
         });
     }
 };
@@ -36,10 +37,11 @@ const fetchFeedback = async (req, res, next) => {
 
         res.locals.feedbacks = result.rows;
 
-        next()
+        next();
     } catch (error) {
         res.status(500).json({
-            message: "Error fetching feedback"
+            message: "Error fetching feedback",
+            error: error.message
         });
     }
 };

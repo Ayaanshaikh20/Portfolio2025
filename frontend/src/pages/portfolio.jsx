@@ -61,7 +61,6 @@ const Portfolio = () => {
     try {
       let result = await axios.get("/api/feedback");
       const { data, status, statusText } = result;
-      console.log(result)
       if (status === 200 && statusText === "OK") {
         setFeedbacks(data.feedbacks);
       }
@@ -84,6 +83,7 @@ const Portfolio = () => {
           rating: 0,
           desc: ""
         });
+        await fetchFeedbacks();
       }
     } catch (error) {
       alert("Error submitting feedback. Please try again later.");
