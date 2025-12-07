@@ -19,7 +19,6 @@ import emailjs from "emailjs-com";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import TestimonialsCarousel from "./testimonialsCarousel";
-import axios from "axios";
 import api from "../config/api";
 
 const serviceKey = import.meta.env.VITE_SERVICE_URL;
@@ -61,9 +60,8 @@ const Portfolio = () => {
   const fetchFeedbacks = async () => {
     try {
       let result = await api.get("/api/feedback");
-      console.log(result, 'prod');
-      const { data, status, statusText } = result;
-      if (status === 200 && statusText === "OK") {
+      const { data, status } = result;
+      if (status === 200) {
         setFeedbacks(data.feedbacks);
       }
     } catch (error) {
@@ -75,8 +73,8 @@ const Portfolio = () => {
     e.preventDefault();
     try {
       let result = await api.post("/api/feedback", feedbackForm);
-      const { data, status, statusText } = result;
-      if (status === 200 && statusText === "OK") {
+      const { data, status } = result;
+      if (status === 200) {
         alert(data.message);
         setFeedbackForm({
           shop_name: "",
