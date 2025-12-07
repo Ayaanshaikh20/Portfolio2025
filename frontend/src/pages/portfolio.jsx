@@ -61,6 +61,7 @@ const Portfolio = () => {
   const fetchFeedbacks = async () => {
     try {
       let result = await api.get("/api/feedback");
+      console.log(result)
       const { data, status, statusText } = result;
       if (status === 200 && statusText === "OK") {
         setFeedbacks(data.feedbacks);
@@ -75,6 +76,7 @@ const Portfolio = () => {
     try {
       let result = await api.post("/api/feedback", feedbackForm);
       const { data, status, statusText } = result;
+      console.log(data, status, statusText);
       if (status === 200 && statusText === "OK") {
         alert(data.message);
         setFeedbackForm({
