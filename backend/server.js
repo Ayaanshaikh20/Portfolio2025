@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 cron.schedule('*/10 * * * *', () => {
-  console.log('running a task every 15 minute');
+  console.log('running a task every 10 minute');
 });
 
 // All routes
