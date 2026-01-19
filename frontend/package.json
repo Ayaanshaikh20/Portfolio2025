@@ -18,6 +18,7 @@
     "@mui/material": "^7.3.0",
     "axios": "^1.13.2",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.27.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.7.1"

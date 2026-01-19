@@ -1,5 +1,5 @@
 import {
-  Drawer,
+  Drawer as MuiDrawer,
   Box,
   Typography,
   List,
@@ -7,7 +7,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  IconButton
+  IconButton,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
@@ -16,17 +16,17 @@ import WorkIcon from "@mui/icons-material/Work"; // New icon for Experience
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router";
 
-const DrawerComponent = ({ setOpenMenu, openMenu }) => {
+const Drawer = ({ setOpenMenu, openMenu }) => {
   const navigate = useNavigate();
   const menuItems = [
     { text: "Home", path: "/", icon: <HomeIcon sx={{ color: "white" }} /> },
     { text: "About", icon: <InfoIcon sx={{ color: "white" }} /> },
     { text: "Experience", path: "/experience", icon: <WorkIcon sx={{ color: "white" }} /> }, // Changed icon
-    { text: "Contact", icon: <ContactMailIcon sx={{ color: "white" }} /> }
+    { text: "Contact", icon: <ContactMailIcon sx={{ color: "white" }} /> },
   ];
 
   return (
-    <Drawer
+    <MuiDrawer
       anchor="right"
       onClose={() => setOpenMenu(false)}
       open={openMenu}
@@ -35,8 +35,8 @@ const DrawerComponent = ({ setOpenMenu, openMenu }) => {
           backgroundColor: "#252625",
           color: "#FFFFFF",
           width: "100%",
-          maxWidth: "100%"
-        }
+          maxWidth: "100%",
+        },
       }}
     >
       <Box sx={{ width: "100%", padding: 3 }}>
@@ -69,8 +69,8 @@ const DrawerComponent = ({ setOpenMenu, openMenu }) => {
           ))}
         </List>
       </Box>
-    </Drawer>
+    </MuiDrawer>
   );
 };
 
-export default DrawerComponent;
+export default Drawer;
