@@ -1,10 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+
+    font-feature-settings:
+      "ss02" 1,
+      "liga" 1,
+      "calt" 1;
+
+    font-optical-sizing: auto;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+#cursor-glow {
+  background:
+    radial-gradient(600px at var(--mouse-x) var(--mouse-y), rgba(32, 89, 245, 0.15), transparent 80%)
+}
+
+@media (max-width: 768px) {
+  body {
+    background: #0a192f;
+  }
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'JetBrains Mono', monospace;
 }

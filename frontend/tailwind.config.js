@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     screens: {
-      'sm': '426px',
+      'sm': '425px',
       // => @media (min-width: 426px) { ... }
 
       'md': '768px',
@@ -18,7 +18,11 @@ export default {
       '2xl': '2560px',
       // => @media (min-width: 2560px) { ... }
     },
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
+    }
   },
   plugins: []
 };
