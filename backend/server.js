@@ -13,9 +13,6 @@ cron.schedule('*/10 * * * *', () => {
   console.log('running a task every 10 minute');
 });
 
-// All routes
-app.use(require("./controllers/feedback"));
-
 app.get("/", (req, res) => {
     res.send("Hello world");
 });
