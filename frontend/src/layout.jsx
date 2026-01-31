@@ -25,19 +25,21 @@ import postman from "./assets/img/postman.png";
 import vue from "./assets/img/vuejs.png";
 import sql from "./assets/img/sql.png";
 import aws from "./assets/img/aws.png";
-import careerCompassThumbnail from "./assets/img/careercompass.png";
+import reactquery from "./assets/img/reactquery.png";
+import careerCompassThumbnail from "./assets/img/careercompass-login.png";
+import ccregister from "./assets/img/cc-register.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 const sections = ["About", "Experience", "Education", "Skills", "Projects"];
 
-const images = [careerCompassThumbnail];
+const images = [careerCompassThumbnail, ccregister];
 
 const sectionIcons = {
-  "About": FiUser,
-  "Experience": FiBriefcase,
-  "Education": FiBookOpen,
-  "Skills": FiTool,
-  "Projects": FiFolder,
+  About: FiUser,
+  Experience: FiBriefcase,
+  Education: FiBookOpen,
+  Skills: FiTool,
+  Projects: FiFolder,
 };
 
 const expData = [
@@ -69,6 +71,8 @@ const expData = [
 ];
 
 const primaryStack = [
+  { name: "HTML5", logo: html },
+  { name: "CSS3", logo: css },
   { name: "JavaScript", logo: js },
   { name: "TypeScript", logo: ts },
   { name: "React", logo: react },
@@ -78,8 +82,7 @@ const primaryStack = [
 ];
 
 const secondaryStack = [
-  { name: "HTML5", logo: html },
-  { name: "CSS3", logo: css },
+  { name: "React Query", logo: reactquery },
   { name: "Tailwind CSS", logo: tailwind },
   { name: "Redux Toolkit", logo: redux },
   { name: "PostgreSQL", logo: postgresql },
@@ -198,7 +201,7 @@ const Layout = () => {
         </aside>
 
         {/* ================= RIGHT (CONTENT) ================= */}
-        <section className="flex-1 text-slate-400 lg:w-[52%] mt-20 xl:mt-24 mb-12 text-sm sm:text-base leading-snug sm:leading-relaxed">
+        <section className="flex-1 text-slate-400 lg:w-[52%] mt-20 xl:mt-24 mb-12 text-sm leading-snug sm:leading-relaxed">
           <div className="space-y-36 w-full">
             {/* ABOUT */}
             <section className=" w-full" id="About">
@@ -425,24 +428,39 @@ const Layout = () => {
                 <div className="relative">
                   <div className="items-start flex-col gap-6">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3">
-                        <img src={LogoCC} alt="CareerCompass" className="h-7 w-auto" />
-                        <h3 className="text-slate-200 font-medium text-base">CareerCompass</h3>
-                        {/* Footer row */}
-                        <div className=" flex items-center justify-between">
+                      <div className="flex items-center flex-wrap justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                          <img src={LogoCC} alt="CareerCompass" className="h-7 w-auto" />
+                          <h3 className="text-slate-200 font-medium text-base">CareerCompass</h3>
+                          <div className="flex items-center gap-1.5 ml-2">
+                            <span className="relative flex h-2.5 w-2.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                            </span>
+                            <span className="text-green-400 text-xs font-medium">Live</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <a
+                            href="https://careercompass.cyrusesolutions.xyz/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className=" rounded-md bg-slate-800 px-3 py-1 text-xs text-slate-200 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-colors"
+                          >
+                            Visit
+                          </a>
                           <Link
                             to="https://github.com/Ayaanshaikh20/CareerCompass/"
                             target="_blank"
-                            className="text-slate-400 hover:text-slate-200 transition-colors text-sm"
+                            className="text-slate-400 hover:text-slate-200 transition-colors"
                             title="Source Code"
                           >
                             <GitHubIcon fontSize="small" />
                           </Link>
                         </div>
                       </div>
-
                       {/* Tech stack */}
-                      <ul className="mt-3 flex flex-wrap gap-2">
+                      <ul className=" flex flex-wrap mt-8 gap-2">
                         {["Vite", "Node.js", "Express.js", "PostgreSQL", "Material UI", "JWT", "Render"].map((tech) => (
                           <li key={tech} className="rounded-full px-3 py-1 text-xs text-slate-300 bg-white/[0.05]">
                             {tech}
@@ -450,13 +468,13 @@ const Layout = () => {
                         ))}
                       </ul>
                     </div>
-                    <div className="sm:block w-44 mt-5 xl:mt-0 h-28 md:w-56 md:h-32 rounded-xl bg-white/[0.05] overflow-hidden shrink-0 relative">
+                    <div className="sm:block w-44 mt-5 h-28 md:w-[75%] object-cover md:h-56 rounded-xl overflow-hidden shrink-0 relative">
                       {images.map((img, index) => (
                         <img
                           key={img}
                           src={img}
                           alt="CareerCompass preview"
-                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out 
+                          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out 
                             ${index === currentImage ? "opacity-100" : "opacity-0"}`}
                         />
                       ))}
@@ -464,13 +482,38 @@ const Layout = () => {
                   </div>
 
                   {/* Description */}
-                  <ul className="mt-5 space-y-2 list-disc pl-4 text-sm sm:text-base text-slate-400 leading-snug">
-                    <li>Built a full-stack job tracking web application that allows users to manage and organize job applications from multiple platforms.</li>
-                    <li>Implemented secure authentication and authorization using JWT with Axios interceptors for session-safe access control.</li>
-                    <li>Developed backend services using Node.js and Express.js with PostgreSQL for structured data storage and querying.</li>
-                    <li>Designed a responsive and accessible UI using Material UI, ensuring consistency across devices.</li>
-                    <li>Used Vite for faster development builds and optimized performance.</li>
-                    <li>Deployed frontend, backend, and database on Render with an integrated CI/CD workflow.</li>
+                  <ul className="mt-5 space-y-2 list-disc pl-4 text-sm text-slate-400 leading-snug">
+                    <li>
+                      Built a <span className="text-slate-200 font-semibold">full-stack job tracking web application</span> that allows users to manage and organize job
+                      applications from multiple platforms.
+                    </li>
+
+                    <li>
+                      Implemented <span className="text-slate-200 font-semibold">secure authentication and authorization</span> using{" "}
+                      <span className="text-slate-200 font-semibold">JWT</span> with <span className="text-slate-200 font-semibold">Axios interceptors</span> for session-safe
+                      access control.
+                    </li>
+
+                    <li>
+                      Developed backend services using <span className="text-slate-200 font-semibold">Node.js</span> and{" "}
+                      <span className="text-slate-200 font-semibold">Express.js</span> with <span className="text-slate-200 font-semibold">PostgreSQL</span> for structured data
+                      storage and querying.
+                    </li>
+
+                    <li>
+                      Designed a <span className="text-slate-200 font-semibold">responsive and accessible UI</span> using{" "}
+                      <span className="text-slate-200 font-semibold">Material UI</span>, ensuring consistency across devices.
+                    </li>
+
+                    <li>
+                      Used <span className="text-slate-200 font-semibold">Vite</span> for <span className="text-slate-200 font-semibold">faster development builds</span> and{" "}
+                      <span className="text-slate-200 font-semibold">performance optimization</span>.
+                    </li>
+
+                    <li>
+                      Deployed <span className="text-slate-200 font-semibold">frontend, backend, and database</span> on <span className="text-slate-200 font-semibold">AWS EC2 Instance</span>{" "}
+                      with an integrated <span className="text-slate-200 font-semibold">auto build process</span>.
+                    </li>
                   </ul>
                   {/* Divider */}
                   <div className="mt-8 h-px w-full bg-white/5" />
