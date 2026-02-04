@@ -510,10 +510,10 @@ const Layout = () => {
                       <span className="text-slate-200 font-semibold">performance optimization</span>.
                     </li>
 
-                    <li>
+                    {/* <li>
                       Deployed <span className="text-slate-200 font-semibold">frontend, backend, and database</span> on <span className="text-slate-200 font-semibold">AWS EC2 Instance</span>{" "}
                       with an integrated <span className="text-slate-200 font-semibold">auto build process</span>.
-                    </li>
+                    </li> */}
                   </ul>
                   {/* Divider */}
                   <div className="mt-8 h-px w-full bg-white/5" />
