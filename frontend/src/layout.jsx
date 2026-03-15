@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FiUser, FiBriefcase, FiBookOpen, FiFolder, FiTool } from "react-icons/fi";
+import { FiUser, FiBriefcase, FiBookOpen, FiFolder, FiTool, FiMonitor } from "react-icons/fi";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -28,11 +28,18 @@ import aws from "./assets/img/aws.png";
 import reactquery from "./assets/img/reactquery.png";
 import careerCompassThumbnail from "./assets/img/careercompass-login.png";
 import ccregister from "./assets/img/cc-register.png";
+import ironfit1 from "./assets/img/ironfit-1.png";
+import ironfit2 from "./assets/img/ironfit-2.png";
+import ironfit3 from "./assets/img/ironfit-3.png";
+import ironfit4 from "./assets/img/ironfit-4.png";
+import ironfit5 from "./assets/img/ironfit-5.png";
+import ironfit6 from "./assets/img/ironfit-6.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 
-const sections = ["About", "Experience", "Education", "Skills", "Projects"];
+const sections = ["About", "Experience", "Education", "Skills", "Projects", "Freelance"];
 
 const images = [careerCompassThumbnail, ccregister];
+const ironfitImages = [ironfit1, ironfit2, ironfit3, ironfit4, ironfit5, ironfit6];
 
 const sectionIcons = {
   About: FiUser,
@@ -40,6 +47,7 @@ const sectionIcons = {
   Education: FiBookOpen,
   Skills: FiTool,
   Projects: FiFolder,
+  Freelance: FiMonitor,
 };
 
 const expData = [
@@ -97,12 +105,19 @@ const secondaryStack = [
 const Layout = () => {
   const [activeSection, setActiveSection] = useState("about");
   const [currentImage, setCurrentImage] = useState(0);
+  const [currentIronfitImage, setCurrentIronfitImage] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000); // 3 seconds
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIronfitImage((prev) => (prev + 1) % ironfitImages.length);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
@@ -125,9 +140,7 @@ const Layout = () => {
           }
         });
       },
-      {
-        rootMargin: "-40% 0px -40% 0px",
-      },
+      { rootMargin: "-40% 0px -40% 0px" },
     );
 
     sections.forEach((id) => {
@@ -516,6 +529,93 @@ const Layout = () => {
                     </li>
                   </ul>
                   {/* Divider */}
+                  <div className="mt-8 h-px w-full bg-white/5" />
+                </div>
+              </div>
+
+            </section>
+
+            {/* FREELANCE */}
+            <section id="Freelance">
+              <nav className="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-md border-b border-white/5 px-4 py-3 mb-10 lg:hidden">
+                <h2
+                  className={`flex items-center gap-2 uppercase tracking-widest font-semibold text-xs sm:text-sm transition-colors
+        ${activeSection === "Freelance" ? "text-teal-300" : "text-slate-400"}`}
+                >
+                  <FiMonitor size={14} />
+                  Freelance
+                </h2>
+              </nav>
+
+              <p className="text-slate-400 text-sm mb-10 leading-relaxed">
+                Demo websites I build to showcase what I can deliver for clients — fully designed, developed, and deployed on a live domain.
+              </p>
+
+              <div className="relative group">
+                <div className="relative">
+                  {/* Header row */}
+                  <div className="flex items-center flex-wrap justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-slate-200 font-medium text-base">IronFit</h3>
+                      <span className="rounded-full px-2 py-0.5 text-xs font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20">Demo</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                        </span>
+                        <span className="text-green-400 text-xs font-medium">Live</span>
+                      </div>
+                    </div>
+                    <a
+                      href="https://ironfit.cyrusesolutions.xyz/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md bg-slate-800 px-3 py-1 text-xs text-slate-200 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-colors"
+                    >
+                      Visit
+                    </a>
+                  </div>
+
+                  <p className="mt-2 text-xs text-slate-500">Fitness gym landing page — built as a freelance demo for the fitness industry.</p>
+
+                  {/* Image carousel */}
+                  <div className="mt-5 w-full h-52 md:h-72 rounded-xl overflow-hidden relative">
+                    {ironfitImages.map((img, index) => (
+                      <img
+                        key={img}
+                        src={img}
+                        alt={`IronFit screenshot ${index + 1}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out
+                          ${index === currentIronfitImage ? "opacity-100" : "opacity-0"}`}
+                      />
+                    ))}
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                      {ironfitImages.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentIronfitImage(i)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === currentIronfitImage ? "w-4 bg-teal-400" : "w-1.5 bg-white/30"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tech stack */}
+                  <ul className="flex flex-wrap mt-5 gap-2">
+                    {["React", "Tailwind CSS", "Framer Motion", "Vite"].map((tech) => (
+                      <li key={tech} className="rounded-full px-3 py-1 text-xs text-slate-300 bg-white/[0.05]">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="mt-5 space-y-2 list-disc pl-4 text-sm text-slate-400 leading-snug">
+                    <li>A <span className="text-slate-200 font-semibold">modern fitness landing page</span> demo showcasing what I can build for gym and wellness businesses.</li>
+                    <li>Features <span className="text-slate-200 font-semibold">scroll-based animations</span> and smooth micro-interactions using <span className="text-slate-200 font-semibold">Framer Motion</span>.</li>
+                    <li>Fully <span className="text-slate-200 font-semibold">responsive</span> across all screen sizes, deployed on a <span className="text-slate-200 font-semibold">custom live domain</span>.</li>
+                  </ul>
                   <div className="mt-8 h-px w-full bg-white/5" />
                 </div>
               </div>
