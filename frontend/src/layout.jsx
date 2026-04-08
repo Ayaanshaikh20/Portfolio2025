@@ -474,7 +474,7 @@ const Layout = () => {
                       </div>
                       {/* Tech stack */}
                       <ul className=" flex flex-wrap mt-8 gap-2">
-                        {["Vite", "Node.js", "Express.js", "PostgreSQL", "Material UI", "JWT", "Render"].map((tech) => (
+                        {["Vite", "Node.js", "Express.js", "PostgreSQL", "Material UI", "JWT", "AWS Amplify", "AWS Lambda"].map((tech) => (
                           <li key={tech} className="rounded-full px-3 py-1 text-xs text-slate-300 bg-white/[0.05]">
                             {tech}
                           </li>
@@ -524,7 +524,7 @@ const Layout = () => {
                     </li>
 
                     <li>
-                      Deployed <span className="text-slate-200 font-semibold">frontend, backend</span> on <span className="text-slate-200 font-semibold">Render</span>{" "}
+                      Deployed frontend on <span className="text-slate-200 font-semibold">AWS Amplify{" "}</span>with serverless backend deployed on{" "}<span className="text-slate-200 font-semibold">AWS Lambda</span>{" "}
                       with an integrated <span className="text-slate-200 font-semibold">auto build process</span>.
                     </li>
                   </ul>
