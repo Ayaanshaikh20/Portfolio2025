@@ -536,7 +536,7 @@ const Layout = () => {
             </section>
 
             {/* FREELANCE */}
-            <section id="Freelance">
+            {/* <section id="Freelance">
               <nav className="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-md border-b border-white/5 px-4 py-3 mb-10 lg:hidden">
                 <h2
                   className={`flex items-center gap-2 uppercase tracking-widest font-semibold text-xs sm:text-sm transition-colors
@@ -552,9 +552,9 @@ const Layout = () => {
               </p>
 
               <div className="relative group">
-                <div className="relative">
-                  {/* Header row */}
-                  <div className="flex items-center flex-wrap justify-between gap-4">
+                <div className="relative"> */}
+            {/* Header row */}
+            {/* <div className="flex items-center flex-wrap justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <h3 className="text-slate-200 font-medium text-base">IronFit</h3>
                       <span className="rounded-full px-2 py-0.5 text-xs font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20">Demo</span>
@@ -576,10 +576,10 @@ const Layout = () => {
                     </a>
                   </div>
 
-                  <p className="mt-2 text-xs text-slate-500">Fitness gym landing page — built as a freelance demo for the fitness industry.</p>
+                  <p className="mt-2 text-xs text-slate-500">Fitness gym landing page — built as a freelance demo for the fitness industry.</p> */}
 
-                  {/* Image carousel */}
-                  <div className="mt-5 w-full h-52 md:h-72 rounded-xl overflow-hidden relative">
+            {/* Image carousel */}
+            {/* <div className="mt-5 w-full h-52 md:h-72 rounded-xl overflow-hidden relative">
                     {ironfitImages.map((img, index) => (
                       <img
                         key={img}
@@ -600,10 +600,10 @@ const Layout = () => {
                         />
                       ))}
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* Tech stack */}
-                  <ul className="flex flex-wrap mt-5 gap-2">
+            {/* Tech stack */}
+            {/* <ul className="flex flex-wrap mt-5 gap-2">
                     {["React", "Tailwind CSS", "Framer Motion", "Vite"].map((tech) => (
                       <li key={tech} className="rounded-full px-3 py-1 text-xs text-slate-300 bg-white/[0.05]">
                         {tech}
@@ -619,7 +619,7 @@ const Layout = () => {
                   <div className="mt-8 h-px w-full bg-white/5" />
                 </div>
               </div>
-            </section>
+            </section> */}
           </div>
         </section>
       </main>
