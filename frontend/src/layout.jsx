@@ -39,7 +39,7 @@ import ironfit5 from "./assets/img/ironfit-5.png";
 import ironfit6 from "./assets/img/ironfit-6.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 
-const sections = ["About", "Experience", "Education", "Skills", "Projects", "Freelance"];
+const sections = ["About", "Experience", "Education", "Skills", "Projects"];
 
 const images = [careerCompassThumbnail, ccregister];
 const ironfitImages = [ironfit1, ironfit2, ironfit3, ironfit4, ironfit5, ironfit6];
