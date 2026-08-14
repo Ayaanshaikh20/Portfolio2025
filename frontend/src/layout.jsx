@@ -47,7 +47,7 @@ const sectionIcons = {
   Education: FiBookOpen,
   Skills: FiTool,
   Projects: FiFolder,
-  Freelance: FiMonitor,
+  // Freelance: FiMonitor,
 };
 
 const expData = [
