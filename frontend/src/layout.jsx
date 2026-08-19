@@ -9,7 +9,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { Link } from "react-router";
 import rcoeImage from "./assets/img/rcoe-1.jpg";
 import LogoCC from "./assets/img/logoCareerCompass.png";
-import resume from "./assets/img/Resume.pdf";
+import resume from "./assets/img/ayaan_resume.pdf";
 import MyImage from "./assets/img/MyImage.jpg";
 import js from "./assets/img/javascript.png";
 import ts from "./assets/img/typescript.png";
